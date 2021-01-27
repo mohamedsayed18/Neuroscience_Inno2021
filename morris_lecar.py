@@ -31,6 +31,29 @@ class morris_lecar():
 
         self.volts = []
 
+    def reset(self):
+         #variable
+        self.v = -52.14
+        self.v1 = 30
+        self.v2 = 15
+        self.v3 = 0
+        self.v4 = 30
+        self.v_ca = 100
+        self.v_k = -70
+        self.v_l = -50
+        self.dt = 0.1
+
+        self.I = 0
+        self.n = 0.02
+        self.dt = 0.1
+        self.c = 6.69810502993
+        self.phi = 0.025
+        self.gl = 0.5
+        self.gca = 1.1
+        self.gk = 2
+
+        self.volts = []
+                
     def m_inf(self):
         return (0.5) * (1 + np.tanh( (self.v-self.v1)/self.v2 ))
 
@@ -61,7 +84,7 @@ if __name__ == "__main__":
         if(i>450 and i<550):
             model1.get_v(1)
         else:
-            model1.get_v(0)
+            model1.get_v(1)
 
     plt.plot(model1.volts)
     plt.show()
