@@ -18,7 +18,7 @@ class morris_lecar():
         self.v_ca = 100
         self.v_k = -70
         self.v_l = -50
-        self.dt = 0.1
+        self.dt = 0.01
 
         self.I = 0
         self.n = 0.02
