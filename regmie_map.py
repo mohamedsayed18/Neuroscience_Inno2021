@@ -14,35 +14,32 @@ import matplotlib.pyplot as plt
 
 from morris_lecar import morris_lecar
 
-def simulate(steps):
-    volty = []
-    for i in range(steps):
-        volty.append(model1.get_v(i))
-    
 
 if __name__ == "__main__":
 
     sim_time = 120
+    
+    # the first model at v1 =0
     model1 = morris_lecar()
     model1.v4 = 13
     model1.v3 = -10
     model1.v1 = 0   
-
     # get the output for 2000 step
     for i in range(sim_time):
         model1.get_v(i)
 
-    v_b1 = model1.volts.copy()
-    model1.reset()
-
-    model1.v4 = 13
-    model1.v3 = -10
-    model1.v1 = -20
+#    v_b1 = model1.volts.copy()
+#    model1.reset()
+    # second model
+    model2 = morris_lecar()
+    model2.v4 = 13
+    model2.v3 = -10
+    model2.v1 = -20
 
     for i in range(sim_time):
-        model1.get_v(i)
+        model2.get_v(i)
     
-    v_b2 = model1.volts
+    #v_b2 = model1.volts
 
 
     # Third model
@@ -56,7 +53,10 @@ if __name__ == "__main__":
 
 
     time = [i for i in range(sim_time)]
-    plt.plot(time, v_b1)
-    plt.plot(time, v_b2)
-    plt.plot(time, model3.volts)
+    plt.plot(time, model1.volts, label="beta =0")
+    plt.plot(time, model2.volts, label="beta =-20")
+    plt.plot(time, model3.volts, label="beta =-200")
+    plt.xlabel("time")
+    plt.ylabel("Volt")
+    plt.legend()
     plt.show()
