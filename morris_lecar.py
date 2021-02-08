@@ -77,14 +77,17 @@ class morris_lecar():
         self.n = self.n + self.dn_dt() * self.dt
         
 if __name__ == "__main__":
+    
     model1 = morris_lecar() # create an instance
 
     # get the output for 2000 step
-    for i in range(2000):
+    for i in range(3000):
         if(i>450 and i<550):
             model1.get_v(1)
         else:
-            model1.get_v(1)
+            model1.get_v(0)
 
-    plt.plot(model1.volts)
+    plt.plot(model1.volts, label="world")
+    plt.xlabel("Time")
+    plt.ylabel("V, Volt")
     plt.show()
