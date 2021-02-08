@@ -1,5 +1,8 @@
+"""
 # Task 4: testing model with coupling connected neurons
 # TODO Add the noise
+# 
+"""
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -9,8 +12,8 @@ from morris_lecar import morris_lecar
 class coupled_neurons(morris_lecar):
 
     def __init__(self):
-        self.g_syn = 4
-        self. D = 0.1
+        self.g_syn = 1
+        self. D = 12
         self.index = 0
         super().__init__()
         
@@ -40,18 +43,17 @@ if __name__ == "__main__":
     for i in range(no_neurons):
         neurons.append(coupled_neurons())
         neurons[i].index = i
+        neurons[i].I = 46
 
-    # change initial v
-    #neurons[1].v = -52
-
-    for _ in range(1000):
+    for _ in range(2000):
         for i in range(no_neurons):
             neurons[i].get_v(neurons)
 
-    neurons[0].volts
-
-    plt.plot(neurons[0].volts)
-    plt.plot(neurons[1].volts)
+    plt.plot(neurons[0].volts, label="Neuron1")
+    plt.plot(neurons[1].volts, label="Neuron2")
+    plt.xlabel("Time")
+    plt.ylabel("Volt")
+    plt.legend()
     plt.show()
 
 
