@@ -85,9 +85,9 @@ if __name__ == "__main__":
         if(i>450 and i<550):
             model1.get_v(1)
         else:
-            model1.get_v(0)
+            model1.get_v(1)
 
-    plt.plot(model1.volts, label="world")
+    plt.plot(model1.volts)
     plt.xlabel("Time")
-    plt.ylabel("V, Volt")
+    plt.ylabel("Volt")
     plt.show()
